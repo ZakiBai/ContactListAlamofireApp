@@ -16,6 +16,7 @@ class MainTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.rowHeight = 60
         downloadData()
+        setupRefreshControl()
 
     }
     
@@ -57,21 +58,6 @@ class MainTableViewController: UITableViewController {
         cell.contentConfiguration = content
         return cell
     }
-
-
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
    
     // MARK: - Network Manager
     private func downloadData() {
@@ -80,12 +66,23 @@ class MainTableViewController: UITableViewController {
             case .success(let contacts):
                 self?.contacts = contacts
                 self?.tableView.reloadData()
+                if self?.refreshControl != nil {
+                    self?.refreshControl?.endRefreshing()
+                }
             case .failure(let error):
                 print(error)
             }
         }
     }
     
+    private func setupRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        let refreshAction = UIAction { [unowned self] _ in
+            downloadData()
+        }
+        refreshControl?.addAction(refreshAction, for: .valueChanged)
+    }
 
 
 }
