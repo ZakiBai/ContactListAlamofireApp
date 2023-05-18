@@ -63,7 +63,7 @@ struct Picture {
     let large, medium, thumbnail: String
     
     init(from value: [String: String]) {
-        large = value["value"] ?? ""
+        large = value["large"] ?? ""
         medium = value["medium"] ?? ""
         thumbnail = value["thumbnail"] ?? ""
     }

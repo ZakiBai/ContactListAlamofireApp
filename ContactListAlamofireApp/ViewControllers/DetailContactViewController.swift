@@ -6,27 +6,30 @@
 //
 
 import UIKit
+import AlamofireImage
 
-class DetailContactViewController: UIViewController {
-
+final class DetailContactViewController: UIViewController {
+    
     @IBOutlet var contactImage: UIImageView!
     @IBOutlet var contactNameLabel: UILabel!
     
+    var contact: Contact!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        configure(with: contact)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillLayoutSubviews() {
+        contactImage.layer.cornerRadius = contactImage.bounds.height / 2
     }
-    */
-
+    
+    private func configure(with contact: Contact) {
+        contactNameLabel.text = "\(contact.name.first) \(contact.name.last)"
+        
+        guard let imageURL = URL(string: contact.picture.large) else { return }
+        contactImage.af.setImage(withURL: imageURL)
+    }
 }
+
+        

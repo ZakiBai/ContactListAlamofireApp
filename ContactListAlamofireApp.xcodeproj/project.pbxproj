@@ -17,6 +17,7 @@
 		35F556E72A15F310001A95FE /* DetailContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F556E62A15F310001A95FE /* DetailContactViewController.swift */; };
 		35F556E92A15F324001A95FE /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F556E82A15F324001A95FE /* Contact.swift */; };
 		35F556EC2A15F33C001A95FE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F556EB2A15F33C001A95FE /* NetworkManager.swift */; };
+		35F556F02A161315001A95FE /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 35F556EF2A161315001A95FE /* AlamofireImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35F556DF2A15F1AD001A95FE /* Alamofire in Frameworks */,
+				35F556F02A161315001A95FE /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +146,7 @@
 			name = ContactListAlamofireApp;
 			packageProductDependencies = (
 				35F556DE2A15F1AD001A95FE /* Alamofire */,
+				35F556EF2A161315001A95FE /* AlamofireImage */,
 			);
 			productName = ContactListAlamofireApp;
 			productReference = 35F556C62A15F186001A95FE /* ContactListAlamofireApp.app */;
@@ -175,6 +178,7 @@
 			mainGroup = 35F556BD2A15F185001A95FE;
 			packageReferences = (
 				35F556DD2A15F1AD001A95FE /* XCRemoteSwiftPackageReference "Alamofire" */,
+				35F556EE2A161315001A95FE /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 			);
 			productRefGroup = 35F556C72A15F186001A95FE /* Products */;
 			projectDirPath = "";
@@ -442,6 +446,14 @@
 				kind = branch;
 			};
 		};
+		35F556EE2A161315001A95FE /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -449,6 +461,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 35F556DD2A15F1AD001A95FE /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		35F556EF2A161315001A95FE /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35F556EE2A161315001A95FE /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

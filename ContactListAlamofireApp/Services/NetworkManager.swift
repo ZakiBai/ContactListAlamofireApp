@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+
 enum Link {
     case contactUrl
     
@@ -22,10 +23,14 @@ enum Link {
 final class NetworkManager {
     static let shared = NetworkManager()
     
+    private let urlParams = [
+        "results":"\(15)",
+    ]
+    
     private init() {}
     
     func fetchUsers(completion: @escaping (Result<[Contact], AFError>) -> Void) {
-        AF.request(Link.contactUrl.url)
+        AF.request(Link.contactUrl.url, parameters: urlParams)
             .validate()
             .responseJSON { dataResponse in
                 switch dataResponse.result {
